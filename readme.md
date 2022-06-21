@@ -4,7 +4,7 @@
 This repository contains a PyTorch implementation of a deep learning based image-classification pipeline. Our proposal advocates that, in a coarse-grained label classification context, the fine-tuning of a pre-trained model on fine-grained label classification (defined via clustering techniques) shows better performance than training the classifier directly on coarse-grained labels. We focus on demonstrating and analyzing how, by obtaining the labels of the 'fine-grained' classes, it is possible to improve the accuracy of a CNN in the classification of coarse-grained classes.
 
 # Overview
-
+![alt text](https://github.com/Jackpepito/Improving-classification-by-fine-grained-labels/blob/main/images/pipeline_final.png?raw=true)
 In the first step, feature embeddings are extracted through a CNN  trained on solving a classification task on coarse labels (macro-class). In contrast with representation learning approaches that require clustering of K-means after learning the representations of the features as DeepCluster, we propose to 
 - i) select the most representative images of each coarse class by calculating the uncertainty from its augmentations; 
 - ii) apply a size reduction via UMAP; 

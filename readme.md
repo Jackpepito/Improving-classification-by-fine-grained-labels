@@ -31,3 +31,6 @@ In a second step, the pre-trained model over fine-grained labels is fine-tuned o
 # Requirements
 Major dependencies are:
 
+- pytorch lighting
+- umap
+- hdbscan

@@ -23,11 +23,9 @@ In a second step, the pre-trained model over fine-grained labels is fine-tuned o
 
 ### (1.4) UMAP + HBSCAN
 ![alt text](https://github.com/Jackpepito/Improving-classification-by-fine-grained-labels/blob/main/images/CIFAR100.png?raw=true)
+
 ## 2. Step 2: TRAINING STRATEGIES
 ![alt text](https://github.com/Jackpepito/Improving-classification-by-fine-grained-labels/blob/main/images/STRATEGIES.png?raw=true)
-### (1.1) Fine-tuning Strategy (FN)
-
-### (1.2) Multi-Head Strategy (MH)
 
 # Requirements
 Major dependencies are:

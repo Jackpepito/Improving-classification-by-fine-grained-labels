@@ -3,58 +3,31 @@
 # Introduction
 This repository contains a PyTorch implementation of a deep learning based image-classification pipeline. Our proposal advocates that, in a coarse-grained label classification context, the fine-tuning of a pre-trained model on fine-grained label classification (defined via clustering techniques) shows better performance than training the classifier directly on coarse-grained labels. We focus on demonstrating and analyzing how, by obtaining the labels of the 'fine-grained' classes, it is possible to improve the accuracy of a CNN in the classification of coarse-grained classes.
 
-# Usage
-## 1. PathMNIST tutorial
+# Overview
 
+In the first step, feature embeddings are extracted through a CNN  trained on solving a classification task on coarse labels (macro-class). In contrast with representation learning approaches that require clustering of K-means after learning the representations of the features as DeepCluster, we propose to 
+- i) select the most representative images of each coarse class by calculating the uncertainty from its augmentations; 
+- ii) apply a size reduction via UMAP; 
+- iii)search fine-grained labels through a density-based clustering method as HDBSCAN. Empirically, it is possible to note how this combination of tools allows defining the possible fine-grained labels for each coarse class while keeping the semantics intact as much as possible. 
 
-### (a) Tiling Patch 
-```
-python src/tile_WSI.py -s 512 -e 0 -j 32 -B 50 -M 20 -o <full_patch_to_output_folder> "full_path_to_input_slides/*/*.svs"
-```
-Mandatory parameters:
+In a second step, the pre-trained model over fine-grained labels is fine-tuned on coarse-grained labels. Alternatively, it is possible to carry out a single net training using a multi-head approach: one head of the net is used to calculate the loss on the fine-grained classes while the other on the coarse-grained classes.
 
+# Pipeline
+## 1. Step 1
 
-### (b) Training Patch Feature Extractor
+### (1.1) Training coarse-label classifier  [ResNet18]
 
-```
-python run.py
-```
+### (1.2) Features Extraction
 
-### (c) Constructing Graph
-Go to './feature_extractor' and build graphs from patches:
-```
-python build_graphs.py --weights "path_to_pretrained_feature_extractor" --dataset "path_to_patches" --output "../graphs"
-```
+### (1.3) Uncertainty Filter
 
-## 2. Training Graph-Transformer
-Run the following script to train and store the model and logging files under "graph_transformer/saved_models" and "graph_transformer/runs".
-```
-bash scripts/train.sh
-```
-To evaluate the model. run
-```bash scripts/test.sh```
+### (1.4) UMAP + HBSCAN
 
-Split training, validation, and testing dataset and store them in text files as:
-```
-sample1 \t label1
-sample2 \t label2
-LUAD/C3N-00293-23 \t luad
-...
-```
+## 2. Step 2
 
-## 3. GraphCAM
-To generate GraphCAM of the model on the WSI:
-```
-1. bash scripts/get_graphcam.sh
-```
-To visualize the GraphCAM:
-```
-2. bash scripts/vis_graphcam.sh
-```
-Note: Currently we only support generating GraphCAM for one WSI at each time.
+### (1.1) Fine-tuning Strategy (FN)
 
-
-GraphCAMs generated on WSIs across the runs performed via 5-fold cross validation are shown above. The same set of WSI regions are highlighted by our method across the various  cross-validation folds, thus indicating consistency of our technique in highlighting salient regions of interest. 
+### (1.2) Multi-Head Strategy (MH)
 
 # Requirements
 Major dependencies are:

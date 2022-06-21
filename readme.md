@@ -20,6 +20,7 @@ In a second step, the pre-trained model over fine-grained labels is fine-tuned o
 ### (1.2) Features Extraction
 
 ### (1.3) Uncertainty Filter
+![alt text](https://github.com/Jackpepito/Improving-classification-by-fine-grained-labels/blob/main/images/uncertainty.png?raw=true)
 
 ### (1.4) UMAP + HBSCAN
 ![alt text](https://github.com/Jackpepito/Improving-classification-by-fine-grained-labels/blob/main/images/CIFAR100.png?raw=true)

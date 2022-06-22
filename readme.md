@@ -12,21 +12,12 @@ In the first step, feature embeddings are extracted through a CNN  trained on so
 
 In a second step, the pre-trained model over fine-grained labels is fine-tuned on coarse-grained labels. Alternatively, it is possible to carry out a single net training using a multi-head approach: one head of the net is used to calculate the loss on the fine-grained classes while the other on the coarse-grained classes.
 
-# Pipeline
-## Step 1: Estimating fine-grained labels
-
-### (1.1) Training coarse-label classifier  [ResNet18]
-
-### (1.2) Features Extraction
-
-### (1.3) Uncertainty Filter
+# Uncertainty Filter
 ![alt text](https://github.com/Jackpepito/Improving-classification-by-fine-grained-labels/blob/main/images/uncertainty.png?raw=true)
 
-### (1.4) UMAP + HBSCAN
+# Semantics and Topology of the clusters
 ![alt text](https://github.com/Jackpepito/Improving-classification-by-fine-grained-labels/blob/main/images/CIFAR100.png?raw=true)
 
-## Step 2: Training Strategies
-![alt text](https://github.com/Jackpepito/Improving-classification-by-fine-grained-labels/blob/main/images/STRATEGIES.png?raw=true)
 
 # Requirements
 Major dependencies are:
